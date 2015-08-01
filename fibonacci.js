@@ -1,4 +1,5 @@
-var fs  = require("fs");
+var fs  = require("fs"),
+    date = new Date();
 
 var cached = [];
 
@@ -19,6 +20,16 @@ function fibonacci(x) {
 
 fs.readFileSync(process.argv[2]).toString().split('\n').forEach(function (line) {
     if (line !== "") {
-        console.log(fibonacci(line));
+        /* run 1 without caching */
+        //var oneStart = new Date().getTime();
+        //console.log(fibonacci(line));
+        //var oneEnd = new Date().getTime();
+
+        /* run 2 with caching */
+        var twoStart = new Date().getTime();
+        console.log(fibonacciCached(line));
+        var twoEnd = new Date().getTime();
+
+        console.log('Run2: ' + (twoEnd - twoStart));
     }
 });
