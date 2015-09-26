@@ -12,14 +12,16 @@ var fs  = require("fs"),
         }
 
         return nums;
-    };
+    },
+    arrows = ['>>-->','<--<<'],
+    counter,
+    i;
 
 fs.readFileSync(process.argv[2]).toString().split('\n').forEach(function (line) {
     if (line !== "") {
-        var arrows = ['>>-->','<--<<'],
-            counter = 0;
+        counter = 0;
 
-        for (var i = 0, max = arrows.length; i < max; i += 1) {
+        for (i = 0, max = arrows.length; i < max; i += 1) {
             counter += checker(line, arrows[i]);
         }
 
